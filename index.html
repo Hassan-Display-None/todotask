@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" charset="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js" defer></script>
+        <link rel="stylesheet" href="tailwindcss.css">
+        <script src="app.js" defer></script>
+        <title>task</title>
+    </head>
+    <body >
+        <div id="app" class=" w-full mt-10">
+            <div class=" w-1/2 m-auto flex justify-center">
+                <input v-on:keyup.enter="add" v-model="value" class="border border-black" placeholder="Add task">
+            </div>
+            <div class="m-auto">New tasks</div>
+            <div class="w-full" v-for="(task,index) in tasks">
+                <div class="w-1/2 flex justify-between my-5 border border-green">
+                    <h4>{{task}}</h4>
+                    <div>
+                        <button v-on:click="later(index)" class="w-20 h-10 bg-green-400">later</button>
+                        <button v-on:click="delete1(index)" class="w-20 h-10 bg-blue-400">delete</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="m-auto">later tasks</div>
+            <div class="w-full" v-for="(later,index) in laters">
+                <div class=" w-1/2 flex justify-between my-5 border border-green">
+                    <h4>{{later}}</h4>
+                    <div>
+                        <button v-on:click="unlater(index)" class="w-20 h-10 bg-green-400">unlater</button>
+                        <button v-on:click="delete1(index)" class="w-20 h-10 bg-blue-400">delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
